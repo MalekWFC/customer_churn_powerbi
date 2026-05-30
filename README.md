@@ -37,7 +37,6 @@ The dataset used in this project is a fictional telecom dataset from **Databel**
 - `Age` – Customer age
 - `Payment Method` – Payment method used by the customer
 - `International Plan` – Whether the customer has an international plan
-- `Data Plan` – Whether the customer has an unlimited data plan
 - `Customer Service Calls` – Number of calls made to customer service
 
 ---
