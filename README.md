@@ -1,4 +1,4 @@
-# Customer Churn Analysis: Telecom Insights Dashboard
+# Customer Churn Analysis
 
 ## Table of Contents
 - [Project Overview](#project-overview)
