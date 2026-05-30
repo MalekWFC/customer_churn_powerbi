@@ -16,18 +16,18 @@
 
 ## Project Overview
 
-This customer churn analysis project was developed to investigate churn rates and uncover the key reasons why customers are leaving a telecom service, using Power BI.
+This customer churn analysis project was developed to analyze customer behavior, churn patterns, and retention metrics using Power BI.
 
-The goal of the project is to help business teams understand churn behavior, identify high-risk customer segments, and take data-driven action to improve customer retention through interactive dashboards and visual storytelling.
-
-The project includes data transformation, DAX measures and calculated columns, exploratory analysis, and multi-page dashboard design.
+The goal of the project is to help business and customer success teams monitor key churn KPIs, identify at risk customer segments, and understand the major factors driving churn through interactive dashboards and data-driven insights.
 
 ---
 
 ## Data Sources
 
 ### Telecom Dataset
-The dataset used in this project is a fictional telecom dataset from **Databel**, designed to simulate real-world customer churn scenarios. It contains customer-related information such as demographics, contract types, payment methods, international and data plan usage, and churn status used to analyze churn behavior and retention trends.
+### Customer Dataset
+The dataset used in this project is the **Databel-Data** Excel file, which contains customer-related information such as demographics, subscription details, usage behavior, service interactions, and churn status — designed to simulate real-world customer churn analytics scenarios.
+
 
 ### Dataset Fields Include
 - `CustomerID` – Unique customer identifier
@@ -45,9 +45,7 @@ The dataset used in this project is a fictional telecom dataset from **Databel**
 
 - **Power BI** – Dashboard creation and reporting
 - **Power Query** – Data cleaning and transformation
-- **DAX** – KPI calculations and churn metrics
-- **Data Visualization** – Interactive report pages and storytelling
-
+- **DAX** – KPI calculations and analytics
 ---
 
 ## Data Cleaning & Preparation
@@ -58,7 +56,7 @@ In the data preparation phase, the following steps were performed:
 - Checked and corrected data types
 - Renamed columns for clarity
 - Created calculated columns for age groups and churn categories
-- Validated data integrity and checked for missing values
+- Handled missing values and inconsistencies
 
 ---
 
@@ -66,25 +64,23 @@ In the data preparation phase, the following steps were performed:
 
 EDA was performed to answer important business questions such as:
 
-- What is the overall churn rate for Databel?
-- What are the most common reasons customers are churning?
-- Which age groups have the highest churn rates?
-- How does contract type affect churn?
-- Does having an international or unlimited data plan influence churn?
-- Which states or regions have higher churn concentrations?
+- What is the overall customer churn rate?
+- Which customer segments have the highest churn?
+- How does tenure affect the likelihood of churn?
+- What are the most common reasons customers leave?
+- How does contract type or payment method relate to churn?
 
 ---
 
 ## Data Analysis
 
-Created multiple DAX measures and calculated columns including:
+Created multiple DAX measures and calculations including:
 
 ```DAX
-Number of Customers = COUNT(Databel[Customer ID])
+Total Customers = COUNT('Databel-Data'[Customer ID])
 
-Churned Customers = CALCULATE(COUNT(Databel[Customer ID]), Databel[Churn Label] = "Yes")
-
-Churn Rate = DIVIDE([Churned Customers], [Number of Customers])
+Churn Rate % =
+DIVIDE([Churned Customers], [Total Customers])
 ```
 
 ### DAX Functions Used
@@ -96,8 +92,10 @@ Churn Rate = DIVIDE([Churned Customers], [Number of Customers])
 
 ### Dashboards Created
 - Overview Dashboard (churn rate, churn reasons, geographic map)
-- Demographics Dashboard (age groups, gender, senior citizens)
-- Plan & Contract Dashboard (contract type, payment method, international & data plans)
+- Demographics Dashboard (age groups, senior citizens, churn reasons)
+- Contract Type Dashboard (contract type, payment method, account length)
+- Intl Calls Dashboard (intl plan, intl active)
+- Unlimited Plan Dashboard (unlimited data plan status, consumption)
 
 ---
 
@@ -105,34 +103,31 @@ Churn Rate = DIVIDE([Churned Customers], [Number of Customers])
 
 The analysis revealed the following insights:
 
-- Databel's overall churn rate is approximately **26.86%**
-- The top churn reason is **competitor offerings** — better devices and better deals
-- Customers on **month-to-month contracts** churn at significantly higher rates than those on annual contracts
-- **Senior citizens (65+)** have a notably higher churn rate compared to younger age groups
-- Customers with an **international plan who are not on an international calling group** show very high churn
-- **Direct debit** payment method correlates with higher churn rates
-- Customers making **frequent customer service calls** are more likely to churn
-
+- The dataset contains over **6,600+ customers**
+- Approximately **27% of customers have churned**
+- Month-to-month contract customers show significantly higher churn rates
+- Customers with shorter tenure are most likely to churn
+- Top churn reasons include competitor offers, pricing dissatisfaction, and poor support experience
 ---
 
 ## Recommendations
 
+
 Based on the analysis, the following recommendations were identified:
 
-- Offer incentives to convert month-to-month customers to longer-term contracts
-- Investigate and improve the international plan pricing and offerings to reduce churn in that segment
-- Design targeted retention campaigns for senior citizen customers
-- Reduce friction in customer service by addressing common pain points that drive repeated service calls
-- Benchmark against competitors on device offerings and pricing to reduce competitor-driven churn
-- Monitor customers on direct debit with high service usage as an early churn-risk signal
-
+- Introduce loyalty programs targeting customers in their first year
+- Offer competitive pricing or discounts to customers flagged as at-risk
+- Improve customer support quality and response times
+- Promote annual or two-year contracts with incentives over month-to-month plans
+- Use churn risk dashboards to enable proactive outreach by customer success teams
 ---
 
 ## Limitations
 
-- Dataset is fictional and created for analytics practice purposes
-- Churn reasons are self-reported and may not fully reflect true customer motivations
-- Analysis is based on a static snapshot and does not account for changes over time
+- Dataset is fictional and intended for analytics practice purposes
+- Some churn drivers (e.g., personal reasons) may not be captured in the data
+- Analysis is based on historical records and does not account for real-time changes
+
 
 ---
 
@@ -142,8 +137,8 @@ Potential future enhancements include:
 
 - Predictive churn modeling using machine learning
 - Customer lifetime value (CLV) integration
-- Real-time churn monitoring dashboard
-- Cohort analysis to track retention over time
-- Drill-through pages for individual customer profiles
+- Real-time churn risk scoring
+- Cohort analysis for deeper retention insights
+- Drill-through pages by customer segment or region
 
 ---
